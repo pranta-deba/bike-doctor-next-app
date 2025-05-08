@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "Basic Tune-Up",
+    "description": "Adjust gears, brakes, inflate tires, and lube chain.",
+    "price": 60.0,
+    "currency": "USD",
+    "image": "https://i.ibb.co.com/hxXbcyPw/Garrettbleeding-slim-C.jpg",
+    "category": "Maintenance",
+    "tags": ["tune-up", "gears", "brakes", "tires", "chain"]
+  },
+  {
+    "id": 2,
+    "name": "Full Tune-Up",
+    "description": "Includes basic tune-up plus wheel truing, bearing adjustment, and thorough cleaning.",
+    "price": 100.0,
+    "currency": "USD",
+    "image": "https://i.ibb.co.com/k2f5SS7m/bike-service-480x480.webp",
+    "category": "Maintenance",
+    "tags": ["tune-up", "wheel truing", "bearings", "cleaning"]
+  },
+  {
+    "id": 3,
+    "name": "Wheel Truing",
+    "description": "Correcting bent or warped wheels to ensure smooth riding.",
+    "price": 40.0,
+    "currency": "USD",
+    "image": "https://i.ibb.co.com/208nLk9R/Test-setup-1-1.jpg",
+    "category": "Repair",
+    "tags": ["wheel", "truing", "repair", "maintenance"]
+  },
+  {
+    "id": 4,
+    "name": "Brake Service",
+    "description": "Inspection, adjustment, or replacement of brake pads and cables.",
+    "price": 45.0,
+    "currency": "USD",
+    "image": "https://i.ibb.co.com/bRYmS6Gj/Royal-Enfield-Service-on-Wheels-2-1280x720-1.jpg",
+    "category": "Repair",
+    "tags": ["brakes", "pads", "cables", "repair"]
+  },
+  {
+    "id": 5,
+    "name": "Gear Adjustment",
+    "description": "Fine-tuning derailleurs for smooth and accurate shifting.",
+    "price": 35.0,
+    "currency": "USD",
+    "image": "https://i.ibb.co.com/k2f5SS7m/bike-service-480x480.webp",
+    "category": "Repair",
+    "tags": ["gears", "derailleurs", "shifting", "adjustment"]
+  },
+  {
+    "id": 6,
+    "name": "Chain Replacement",
+    "description": "Replacing a worn-out chain to improve drivetrain efficiency.",
+    "price": 30.0,
+    "currency": "USD",
+    "image": "https://i.ibb.co.com/hxXbcyPw/Garrettbleeding-slim-C.jpg",
+    "category": "Maintenance",
+    "tags": ["chain", "replacement", "drivetrain"]
+  },
+  {
+    "id": 7,
+    "name": "Tire Replacement",
+    "description": "Mounting and installing new tires.",
+    "price": 25.0,
+    "currency": "USD",
+    "image": "https://i.ibb.co.com/k2f5SS7m/bike-service-480x480.webp",
+    "category": "Maintenance",
+    "tags": ["tires", "replacement"]
+  },
+  {
+    "id": 8,
+    "name": "Bike Cleaning",
+    "description": "Thorough cleaning of the bike frame, components, and drivetrain.",
+    "price": 50.0,
+    "currency": "USD",
+    "image": "https://i.ibb.co.com/hxXbcyPw/Garrettbleeding-slim-C.jpg",
+    "category": "Appearance",
+    "tags": ["cleaning", "frame", "components", "drivetrain"]
+  },
+  {
+    "id": 9,
+    "name": "Accessory Installation",
+    "description": "Installation of accessories such as racks, fenders, and lights.",
+    "price": 20.0,
+    "currency": "USD",
+    "image": "https://i.ibb.co.com/k2f5SS7m/bike-service-480x480.webp",
+    "category": "Service",
+    "tags": ["accessories", "racks", "fenders", "lights", "installation"]
+  },
+  {
+    "id": 10,
+    "name": "Custom Build",
+    "description": "Building a bike from the frame up, according to customer specifications.",
+    "price": 300.0,
+    "currency": "USD",
+    "image": "https://i.ibb.co.com/hxXbcyPw/Garrettbleeding-slim-C.jpg",
+    "category": "Service",
+    "tags": ["custom", "build", "frame", "components"]
+  }
+]
