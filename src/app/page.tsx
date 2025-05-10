@@ -1,8 +1,11 @@
+import Services from "./components/Services";
+
 export default function Home() {
   return (
     <>
       <div>
-        <button className="btn">button</button>
+        <h1>Services</h1>
+        <Services />
       </div>
     </>
   );
