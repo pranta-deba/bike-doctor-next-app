@@ -1,19 +1,19 @@
-"use server";
-import dbConnect from "@/lib/dbConnect";
+import dbConnect, { COLLECTION_NAME } from "@/lib/dbConnect";
 import Image from "next/image";
 import Link from "next/link";
 
 const Services = async () => {
-  const data = await (await dbConnect("services")).find({}).toArray();
+  const data = await (await dbConnect(COLLECTION_NAME.SERVICES))
+    .find({})
+    .toArray();
 
-  console.log(data);
   return (
     <div className="px-4 py-8">
       <h1 className="text-3xl font-bold text-center mb-8">Our Services</h1>
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6">
         {data.map((service) => (
           <div
-            key={service.id}
+            key={service._id.toString()}
             className="bg-white shadow-lg rounded-xl overflow-hidden transition hover:scale-105 duration-300"
           >
             <div className="relative w-full h-56">
@@ -22,7 +22,6 @@ const Services = async () => {
                 alt={service.name}
                 width={600}
                 height={200}
-                className="rounded-t-xl"
               />
             </div>
             <div className="p-4">

@@ -8,4 +8,4 @@ export type TService = {
   image: string;
   category: string;
   tags: string[];
-} | null;
+};

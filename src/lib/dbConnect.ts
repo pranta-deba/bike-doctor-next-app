@@ -1,6 +1,11 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 const uri = process.env.DATABASE_URL as string;
 
+export const COLLECTION_NAME = {
+  SERVICES: "services",
+  USERS: "users",
+};
+
 const dbConnect = async (collectionName: string) => {
   const client = new MongoClient(uri, {
     serverApi: {
