@@ -2,8 +2,10 @@
 
 import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
+  const router = useRouter();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -15,7 +17,22 @@ const LoginForm = () => {
 
     console.log({ email, password });
 
-    await signIn("credentials", { email, password });
+    try {
+      const res = await signIn("credentials", {
+        email,
+        password,
+        callbackUrl: "/",
+        redirect: false,
+      });
+
+      if (res?.ok) {
+        router.push("/");
+      } else {
+        console.log(res);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

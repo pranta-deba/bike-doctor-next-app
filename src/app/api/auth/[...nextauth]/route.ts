@@ -1,3 +1,4 @@
+import { loginUser } from "@/app/actions/auth/loginUser";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -14,16 +15,22 @@ export const authOptions = {
           console.log("No credentials received.");
           return null;
         }
+        const result = await loginUser({
+          email: credentials.email,
+          password: credentials.password,
+        });
 
-        console.log("Received credentials:", credentials);
+        if (result.success && result.user) {
+          const userDoc = result.user;
 
-        const user = { id: "1", name: "J Smith", email: "jsmith@example.com" };
-
-        if (user) {
-          return user;
-        } else {
-          return null;
+          return {
+            id: userDoc._id.toString(),
+            name: userDoc.name || userDoc.email,
+            email: userDoc.email,
+          };
         }
+
+        return null;
       },
     }),
   ],
