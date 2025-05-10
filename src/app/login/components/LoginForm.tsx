@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 const LoginForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -15,7 +15,7 @@ const LoginForm = () => {
 
     console.log({ email, password });
 
-    await signIn("credentials", { redirect: false, email, password, callbackUrl: "/login"});
+    await signIn("credentials", { email, password });
   };
 
   return (
