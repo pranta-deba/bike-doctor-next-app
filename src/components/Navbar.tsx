@@ -1,6 +1,11 @@
+"use client";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
 const Navbar = () => {
+  const { status } = useSession();
+
+  console.log(status);
   const navLinks = (
     <>
       <li>
@@ -57,9 +62,15 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
-          <Link href="/login" className="btn">
-            Sign in
-          </Link>
+          {status === "authenticated" ? (
+            <button onClick={() => signOut()} className="btn">
+              Logout
+            </button>
+          ) : (
+            <Link href="/login" className="btn">
+              Sign in
+            </Link>
+          )}
         </div>
       </div>
     </div>
