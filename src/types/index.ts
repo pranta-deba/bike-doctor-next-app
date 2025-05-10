@@ -1,5 +1,5 @@
-export type TServices = {
-  _id: string;
+export type TService = {
+  _id?: string;
   id: number;
   name: string;
   description: string;
@@ -8,4 +8,4 @@ export type TServices = {
   image: string;
   category: string;
   tags: string[];
-};
+} | null;
