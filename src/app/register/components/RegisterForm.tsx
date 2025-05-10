@@ -1,9 +1,12 @@
 "use client";
 
+import { registerUser } from "@/app/actions/auth/registerUser";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const RegisterForm = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const form = e.currentTarget;
@@ -22,6 +25,12 @@ const RegisterForm = () => {
     }
 
     console.log({ name, email, password });
+    const result = await registerUser({ name, email, password });
+
+    console.log(result);
+    if (result.success) {
+      router.push("/login");
+    }
   };
 
   return (
