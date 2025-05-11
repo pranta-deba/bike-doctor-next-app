@@ -5,8 +5,7 @@ import { signIn } from "next-auth/react";
 const SocialLogin = () => {
   const handleSocialLogin = async (provider: string) => {
     try {
-      const res = await signIn(provider, { redirect: false });
-      console.log(res);
+      await signIn(provider, { redirect: false, callbackUrl: "/" });
     } catch (error) {
       console.log(error);
     }
