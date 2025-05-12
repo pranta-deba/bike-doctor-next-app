@@ -1,6 +1,7 @@
 import { loginUser } from "@/app/actions/auth/loginUser";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+import dbConnect, { COLLECTION_NAME } from "./dbConnect";
 
 export const authOptions = {
   providers: [
@@ -40,5 +41,30 @@ export const authOptions = {
   ],
   pages: {
     signIn: "/login",
+  },
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      console.log({ user, account, profile, email, credentials });
+      if (account) {
+        const { providerAccountId, provider } = account;
+        const { email: user_email, image, name } = user;
+        const userCollection = await dbConnect(COLLECTION_NAME.USERS);
+
+        const existingUser = await userCollection.findOne({
+          providerAccountId,
+        });
+
+        if (!existingUser) {
+          await userCollection.insertOne({
+            email: user_email,
+            image,
+            name,
+            provider,
+            providerAccountId,
+          });
+        }
+      }
+      return true;
+    },
   },
 };
