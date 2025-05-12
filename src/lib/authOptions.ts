@@ -2,8 +2,9 @@ import { loginUser } from "@/app/actions/auth/loginUser";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import dbConnect, { COLLECTION_NAME } from "./dbConnect";
+import { AuthOptions } from "next-auth";
 
-export const authOptions = {
+export const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -44,7 +45,7 @@ export const authOptions = {
   },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      console.log({ user, account, profile, email, credentials });
+    //   console.log({ user, account, profile, email, credentials });
       if (account) {
         const { providerAccountId, provider } = account;
         const { email: user_email, image, name } = user;
