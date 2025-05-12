@@ -1,15 +1,13 @@
-import dbConnect, { COLLECTION_NAME } from "@/lib/dbConnect";
-import { ObjectId } from "mongodb";
 import Image from "next/image";
 import Link from "next/link";
 
 const ServicesDetails = async ({ params }: { params: { id: string } }) => {
   const { id } = await params;
 
-  const collection = await dbConnect(COLLECTION_NAME.SERVICES);
-  const service = await collection.findOne({
-    _id: new ObjectId(id),
-  });
+  const res = await fetch(`http://localhost:3000/api/service/${id}`);
+  const service = await res.json();
+
+  console.log(service);
 
   if (!service) return <div>Service not found</div>;
 
