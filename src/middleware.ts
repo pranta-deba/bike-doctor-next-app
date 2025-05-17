@@ -1,5 +1,21 @@
-import { NextResponse } from "next/server";
+import { getToken } from "next-auth/jwt";
+import { NextRequest, NextResponse } from "next/server";
 
-export const middleware = (req: Request) => {
-  NextResponse.next();
+export const middleware = async (req: NextRequest) => {
+  console.log("FORM MIDDLEWARE: ", req?.nextUrl.pathname);
+
+  const token = await getToken({
+    req,
+    secureCookie: process.env.NODE_ENV === "production",
+  });
+
+  if (token) {
+    return NextResponse.next();
+  } else {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
+};
+
+export const config = {
+  matcher: ["/my-bookings", "/my-bookings/:path*", "/checkout/:path*"],
 };
