@@ -2,10 +2,12 @@
 
 import { TService } from "@/types";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const CheckoutForm = ({ service }: { service: TService }) => {
   const session = useSession();
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     name: session?.data?.user?.name || "",
@@ -17,7 +19,7 @@ const CheckoutForm = ({ service }: { service: TService }) => {
   });
 
   if (session?.status === "loading") return null;
-  console.log(service);
+//   console.log(service);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -29,7 +31,7 @@ const CheckoutForm = ({ service }: { service: TService }) => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const orderInfo = {
       ...formData,
@@ -39,6 +41,19 @@ const CheckoutForm = ({ service }: { service: TService }) => {
       service_img: service?.image,
     };
     console.log("Order Confirmed:", orderInfo);
+
+    const res = await fetch(`http://localhost:3000/api/service`, {
+      method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      body: JSON.stringify(orderInfo),
+    });
+
+    const data = await res.json();
+    if (data?.insertedId) {
+      router.push("/");
+    }
   };
 
   return (

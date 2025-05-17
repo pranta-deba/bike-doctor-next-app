@@ -4,6 +4,7 @@ const uri = process.env.DATABASE_URL as string;
 export const COLLECTION_NAME = {
   SERVICES: "services",
   USERS: "users",
+  BOOKING: "bookings",
 };
 
 const dbConnect = async (collectionName: string) => {
