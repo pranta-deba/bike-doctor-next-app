@@ -4,7 +4,7 @@ import Link from "next/link";
 const ServicesDetails = async ({ params }: { params: { id: string } }) => {
   const { id } = await params;
 
-  const res = await fetch(`http://localhost:3000/api/service/${id}`);
+  const res = await fetch(`${process.env.BASE_URL}/api/service/${id}`);
   const service = await res.json();
 
   console.log(service);
