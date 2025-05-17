@@ -1,3 +1,4 @@
+import CheckoutForm from "@/components/form/CheckoutForm";
 import React from "react";
 
 const CheckoutPage = async ({ params }: { params: { id: string } }) => {
@@ -7,7 +8,11 @@ const CheckoutPage = async ({ params }: { params: { id: string } }) => {
   const service = await res.json();
 
   console.log(service);
-  return <div></div>;
+  return (
+    <div>
+      <CheckoutForm />
+    </div>
+  );
 };
 
 export default CheckoutPage;
