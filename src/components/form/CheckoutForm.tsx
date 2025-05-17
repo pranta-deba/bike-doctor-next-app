@@ -31,7 +31,14 @@ const CheckoutForm = ({ service }: { service: TService }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Order Confirmed:", formData);
+    const orderInfo = {
+      ...formData,
+      service_id: service?._id,
+      service_name: service?.name,
+      service_price: service?.price,
+      service_img: service?.image,
+    };
+    console.log("Order Confirmed:", orderInfo);
   };
 
   return (
