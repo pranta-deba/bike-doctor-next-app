@@ -11,7 +11,7 @@ export const GET = async (
   const service = await collection.findOne({
     _id: new ObjectId(id),
   });
-  console.log(service)
+  console.log(service);
 
   return NextResponse.json(service);
 };
