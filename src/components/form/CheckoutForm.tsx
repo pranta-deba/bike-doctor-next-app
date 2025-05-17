@@ -1,18 +1,22 @@
 "use client";
 
 import { TService } from "@/types";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 const CheckoutForm = ({ service }: { service: TService }) => {
+  const session = useSession();
+
   const [formData, setFormData] = useState({
-    name: "",
+    name: session?.data?.user?.name || "",
     date: "",
-    email: "",
-    dueAmount: "",
+    email: session?.data?.user?.email || "",
+    dueAmount: service?.price || 0,
     phone: "",
     address: "",
   });
 
+  if (session?.status === "loading") return null;
   console.log(service);
 
   const handleChange = (
@@ -44,16 +48,8 @@ const CheckoutForm = ({ service }: { service: TService }) => {
         type="text"
         name="name"
         placeholder="Name"
-        value={formData.name}
-        onChange={handleChange}
-        required
-        className="w-full border border-gray-300 px-4 py-2 rounded-md"
-      />
-
-      <input
-        type="date"
-        name="date"
-        value={formData.date}
+        readOnly={true}
+        value={session?.data?.user?.name || ""}
         onChange={handleChange}
         required
         className="w-full border border-gray-300 px-4 py-2 rounded-md"
@@ -63,17 +59,26 @@ const CheckoutForm = ({ service }: { service: TService }) => {
         type="email"
         name="email"
         placeholder="Email"
-        value={formData.email}
+        readOnly={true}
+        value={session?.data?.user?.email || ""}
         onChange={handleChange}
         required
         className="w-full border border-gray-300 px-4 py-2 rounded-md"
       />
-
       <input
         type="number"
         name="dueAmount"
         placeholder="Due Amount"
-        value={formData.dueAmount}
+        value={service?.price}
+        readOnly={true}
+        onChange={handleChange}
+        required
+        className="w-full border border-gray-300 px-4 py-2 rounded-md"
+      />
+      <input
+        type="date"
+        name="date"
+        value={formData.date}
         onChange={handleChange}
         required
         className="w-full border border-gray-300 px-4 py-2 rounded-md"
