@@ -1,8 +1,9 @@
 "use client";
 
+import { TService } from "@/types";
 import { useState } from "react";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ service }: { service: TService }) => {
   const [formData, setFormData] = useState({
     name: "",
     date: "",
@@ -11,6 +12,8 @@ const CheckoutForm = () => {
     phone: "",
     address: "",
   });
+
+  console.log(service);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -33,6 +36,9 @@ const CheckoutForm = () => {
       className="max-w-xl mx-auto bg-white shadow-md p-6 rounded-md space-y-4"
     >
       <h2 className="text-2xl font-semibold text-center mb-4">Checkout Form</h2>
+      <h2 className="text-2xl font-semibold text-center mb-4">
+        {service?.name}
+      </h2>
 
       <input
         type="text"

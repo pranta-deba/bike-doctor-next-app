@@ -7,10 +7,9 @@ const CheckoutPage = async ({ params }: { params: { id: string } }) => {
   const res = await fetch(`${process.env.BASE_URL}/api/service/${id}`);
   const service = await res.json();
 
-  console.log(service);
   return (
     <div>
-      <CheckoutForm />
+      <CheckoutForm service={service} />
     </div>
   );
 };
