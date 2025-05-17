@@ -4,10 +4,13 @@ import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
 export const GET = async (req: Request) => {
-  const session = await getServerSession({ req, ...authOptions });
-
+  const session = await getServerSession(authOptions);
+// console.log(session)
   if (!session) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json(
+      { error: "Unauthorized", success: false },
+      { status: 401 }
+    );
   }
 
   const email = session.user?.email as string;
