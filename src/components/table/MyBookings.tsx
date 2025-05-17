@@ -1,4 +1,3 @@
-"use client";
 import { TBooking } from "@/types";
 import Image from "next/image";
 
